@@ -70,7 +70,7 @@ const app = () => {
         camera.matrix.fromArray(view.transform.matrix);
         camera.projectionMatrix.fromArray(view.projectionMatrix);
         camera.updateMatrixWorld(true);
-        rotateCube(0.1);
+        //rotateCube(0.1);
 
         renderer.render(scene, camera);
       }
