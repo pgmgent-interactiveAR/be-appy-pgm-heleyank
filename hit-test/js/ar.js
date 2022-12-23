@@ -1,20 +1,20 @@
-import * as THREE from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import * as THREE from "three";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 const app = () => {
   const init = () => {
     console.log(navigator.xr);
     if (navigator.xr) {
-      document.querySelector('#startAR').addEventListener('click', activateXR);
+      document.querySelector("#startAR").addEventListener("click", activateXR);
     } else {
-      alert('not comp');
+      alert("not comp");
     }
   };
 
   const activateXR = async () => {
     // create canvas and initialize WebGL Context
-    const canvas = document.createElement('canvas');
+    const canvas = document.createElement("canvas");
     document.body.appendChild(canvas);
-    const gl = canvas.getContext('webgl', { xrCompatible: true });
+    const gl = canvas.getContext("webgl", { xrCompatible: true });
 
     // create scene to draw object on
     const scene = new THREE.Scene();
@@ -24,22 +24,19 @@ const app = () => {
     scene.add(directionalLight);
     const loader = new GLTFLoader();
     let reticle;
-    loader.load(
-      'https://immersive-web.github.io/webxr-samples/media/gltf/reticle/reticle.gltf',
-      function (gltf) {
-        reticle = gltf.scene;
-        reticle.visible = false;
-        scene.add(reticle);
-      }
-    );
+    loader.load("./assets/scene.gltf", function (gltf) {
+      reticle = gltf.scene;
+      reticle.visible = false;
+      scene.add(reticle);
+    });
     // materials for cube
     const materials = [
-      new THREE.MeshBasicMaterial({ color: 'red' }),
-      new THREE.MeshBasicMaterial({ color: 'blue' }),
-      new THREE.MeshBasicMaterial({ color: 'green' }),
-      new THREE.MeshBasicMaterial({ color: 'purple' }),
-      new THREE.MeshBasicMaterial({ color: 'skyblue' }),
-      new THREE.MeshBasicMaterial({ color: 'darkblue' }),
+      new THREE.MeshBasicMaterial({ color: "red" }),
+      new THREE.MeshBasicMaterial({ color: "blue" }),
+      new THREE.MeshBasicMaterial({ color: "green" }),
+      new THREE.MeshBasicMaterial({ color: "purple" }),
+      new THREE.MeshBasicMaterial({ color: "skyblue" }),
+      new THREE.MeshBasicMaterial({ color: "darkblue" }),
     ];
 
     const cube = new THREE.Mesh(
@@ -61,23 +58,23 @@ const app = () => {
     const camera = new THREE.PerspectiveCamera();
     camera.matrixAutoUpdate = false;
 
-    const session = await navigator.xr.requestSession('immersive-ar', {
-      requiredFeatures: ['hit-test'],
+    const session = await navigator.xr.requestSession("immersive-ar", {
+      requiredFeatures: ["hit-test"],
     });
 
     session.updateRenderState({
       baseLayer: new XRWebGLLayer(session, gl),
     });
-    session.addEventListener('select', (event) => {
+    session.addEventListener("select", (event) => {
       if (cube) {
         const clone = cube.clone();
         clone.position.copy(reticle.position);
         scene.add(clone);
       }
     });
-    const referenceSpace = await session.requestReferenceSpace('local');
+    const referenceSpace = await session.requestReferenceSpace("local");
 
-    const viewerSpace = await session.requestReferenceSpace('viewer');
+    const viewerSpace = await session.requestReferenceSpace("viewer");
 
     const hitTestSource = await session.requestHitTestSource({
       space: viewerSpace,
