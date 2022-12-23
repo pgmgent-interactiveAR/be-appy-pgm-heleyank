@@ -68,7 +68,7 @@ const app = () => {
     session.addEventListener("select", (event) => {
       if (fox) {
         const foxClone = fox.clone();
-        foxClone.position.copy(fox.position);
+        foxClone.position.set(0, 0, -1);
         scene.add(foxClone);
       }
     });
