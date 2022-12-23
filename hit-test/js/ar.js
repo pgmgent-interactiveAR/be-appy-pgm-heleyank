@@ -23,11 +23,11 @@ const app = () => {
     directionalLight.position.set(10, 15, 10);
     scene.add(directionalLight);
     const loader = new GLTFLoader();
-    let reticle;
+    let fox;
     loader.load("./assets/scene.gltf", function (gltf) {
-      reticle = gltf.scene;
-      reticle.visible = false;
-      scene.add(reticle);
+      fox = gltf.scene;
+      fox.visible = false;
+      scene.add(fox);
     });
     // materials for cube
     const materials = [
@@ -66,10 +66,10 @@ const app = () => {
       baseLayer: new XRWebGLLayer(session, gl),
     });
     session.addEventListener("select", (event) => {
-      if (cube) {
-        const clone = cube.clone();
-        clone.position.copy(reticle.position);
-        scene.add(clone);
+      if (fox) {
+        const foxClone = fox.clone();
+        foxClone.position.copy(fox.position);
+        scene.add(foxClone);
       }
     });
     const referenceSpace = await session.requestReferenceSpace("local");
@@ -91,7 +91,7 @@ const app = () => {
       const pose = frame.getViewerPose(referenceSpace);
 
       if (pose) {
-        rotateCube(cube, 0.01, 0.02);
+        //rotateCube(cube, 0.01, 0.02);
 
         const view = pose.views[0];
 
@@ -103,15 +103,15 @@ const app = () => {
         camera.updateMatrixWorld(true);
 
         const hitTestResults = frame.getHitTestResults(hitTestSource);
-        if (hitTestResults.length > 0 && reticle) {
+        if (hitTestResults.length > 0 && fox) {
           const hitPose = hitTestResults[0].getPose(referenceSpace);
-          reticle.visible = true;
-          reticle.position.set(
+          fox.visible = true;
+          fox.position.set(
             hitPose.transform.position.x,
             hitPose.transform.position.y,
             hitPose.transform.position.z
           );
-          reticle.updateMatrixWorld(true);
+          fox.updateMatrixWorld(true);
         }
         renderer.render(scene, camera);
       }
