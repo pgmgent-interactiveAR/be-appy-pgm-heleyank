@@ -24,7 +24,7 @@ const app = () => {
     scene.add(directionalLight);
     const loader = new GLTFLoader();
     let fox;
-    loader.load("./assets/scene.gltf", function (gltf) {
+    loader.load("./fox.glb", function (gltf) {
       fox = gltf.scene;
       fox.visible = false;
       scene.add(fox);
