@@ -5,6 +5,7 @@ import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import Error from "../components/Errors/Error";
 import Instructions from "../components/Instructions/Instructions";
+import Homebtn from "../components/HomeBtn/Homebtn";
 let clips;
 let model;
 let mixer;
@@ -16,6 +17,7 @@ const VirtualPetPage = () => {
   if (navigator.xr && "webkitSpeechRecognition" in window) {
     return (
       <>
+        <Homebtn />
         <Instructions />
         <button
           onClick={() => {
