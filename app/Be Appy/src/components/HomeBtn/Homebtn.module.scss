@@ -1,0 +1,9 @@
+.home_btn {
+    position: absolute;
+    top: -1rem;
+    right: -1rem;
+    &__corner {
+        top: 1rem;
+        right: 1rem;
+    }
+}

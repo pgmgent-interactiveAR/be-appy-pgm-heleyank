@@ -1,0 +1,33 @@
+.error {
+    box-sizing: border-box;
+    background-color: white;
+    width: 20rem;
+    height: 18rem;
+    position: absolute;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 0.5rem solid #F9CFD0 ;
+    z-index: 9999;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    text-align: center;
+    &__go_home {
+        position: absolute;
+        top: -1rem;
+        right: -1rem;
+    }
+    &__title {
+        font-size: 1.5rem;
+    }
+    &__iframe {
+        pointer-events: none;
+        height: 10rem;
+    }
+    &__description {
+        font-family: "Century Gothic Pro";
+    }
+}

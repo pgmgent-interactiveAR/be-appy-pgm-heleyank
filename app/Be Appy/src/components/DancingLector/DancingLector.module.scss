@@ -1,0 +1,45 @@
+.button {
+    background-color: #D2D9E9;
+    border: 0 solid black;
+    box-sizing: border-box;
+    color: var(--secondary-clr);
+    display: flex;
+    font-family: "Century Gothic Pro";
+    font-size: 1.25rem;
+    font-weight: 700;
+    justify-content: center;
+    line-height: 6rem;
+    padding: .75rem 1.65rem;
+    position: relative;
+    text-align: center;
+    text-decoration: none  black solid;
+    text-decoration-thickness: auto;
+    width: 100%;
+    max-width: 13rem;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    touch-action: manipulation;
+    height: 8rem;
+    margin: 2.5rem auto;
+  }
+  
+  .button:focus {
+    outline: 0;
+  }
+  
+  .button:after {
+    content: '';
+    position: absolute;
+    border: 1px solid  var(--secondary-clr);
+    bottom: 4px;
+    left: 4px;
+    width: calc(100% - 1px);
+    height: calc(100% - 1px);
+  }
+  
+  .button:hover:after {
+    bottom: 2px;
+    left: 2px;
+  }
+  

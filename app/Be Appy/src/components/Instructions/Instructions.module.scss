@@ -1,0 +1,14 @@
+.Instructions {
+    &__text {
+        font-family: "Century Gothic Pro";
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    &__subtitle {
+        font-weight: 700;
+    }
+    &__list {
+        margin: 0;
+    }
+}

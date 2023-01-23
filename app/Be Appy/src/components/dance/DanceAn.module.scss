@@ -1,0 +1,23 @@
+.dance_container {
+    height:10rem;
+    width: 16rem;
+    overflow: hidden;
+    position: absolute;
+    right: -8.5rem;
+    bottom: -1.5rem;
+    transform: scale(-1, 1);
+    z-index: 1;
+}
+
+.dance {
+    position: relative;
+    bottom: 1.6rem;
+    height:14.5rem;
+    width: 9rem;
+    z-index: 1;
+    margin-bottom: -4rem;
+    pointer-events: none;
+}
+
+
+
